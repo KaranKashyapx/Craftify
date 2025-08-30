@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Craftify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fff8f0;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background: #fff3e0;
+            padding: 18px 0 10px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo {
+            font-size: 2rem;
+            color: #d2691e;
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+        nav {
+            display: flex;
+            gap: 24px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #a0522d;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ff9800;
+        }
+        .search-bar {
+            display: flex;
+            align-items: center;
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 1px 4px rgba(210, 105, 30, 0.08);
+            padding: 4px 12px;
+            margin: 0 18px;
+        }
+        .search-bar input {
+            border: none;
+            outline: none;
+            background: transparent;
+            font-size: 1rem;
+            padding: 6px 8px;
+            width: 180px;
+        }
+        .search-bar button {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            padding: 6px 14px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 6px;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        .search-bar button:hover {
+            background: #d2691e;
+        }
+        #cart-count {
+            font-weight: bold;
+            background: #ff9800;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-left: 10px;
+            font-size: 1rem;
+        }
+        #cart-btn {
+            background: #d2691e;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 7px 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-left: 10px;
+            font-size: 1rem;
+            transition: background 0.2s;
+        }
+        #cart-btn:hover {
+            background: #ff9800;
+        }
+        .banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 28px auto 0 auto;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(210, 105, 30, 0.08);
+        }
+        .banner img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+        }
+        .categories {
+            max-width: 1200px;
+            margin: 36px auto 0 auto;
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .category-card {
+            background: #fff;
+            border-radius: 14px;
+            box-shadow: 0 2px 8px rgba(210, 105, 30, 0.08);
+            padding: 24px 32px;
+            text-align: center;
+            width: 170px;
+            transition: box-shadow 0.2s, transform 0.2s;
+            cursor: pointer;
+            position: relative;
+        }
+        .category-card:hover {
+            box-shadow: 0 8px 32px rgba(210, 105, 30, 0.18);
+            transform: translateY(-4px) scale(1.04);
+        }
+        .category-card img {
+            width: 60px;
+            margin-bottom: 10px;
+        }
+        .category-card h4 {
+            margin: 8px 0 0 0;
+            color: #d2691e;
+            font-size: 1.1rem;
+        }
+        .coming-soon {
+            position: relative;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+        .coming-soon-label {
+            position: absolute;
+            bottom: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff9800;
+            color: #fff;
+            padding: 4px 14px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            margin-top: 8px;
+            box-shadow: 0 2px 8px rgba(210, 105, 30, 0.08);
+        }
+        .section-title {
+            max-width: 1200px;
+            margin: 48px auto 0 auto;
+            font-size: 1.5rem;
+            color: #d2691e;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .crafts-grid {
+            max-width: 1200px;
+            margin: 24px auto 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+        .craft-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(210, 105, 30, 0.08);
+            padding: 18px 18px 24px 18px;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .craft-card:hover {
+            box-shadow: 0 8px 32px rgba(210, 105, 30, 0.18);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .craft-card img {
+            .craft-card img {
+                width: 100%;
+                height: auto; /* keeps aspect ratio */
+                max-height: 250px; /* prevents images from being too tall */
+                object-fit: cover;
+                border-radius: 12px;
+                margin-bottom: 14px;
+            }
+
+        }
+        .craft-card h3 {
+            margin: 10px 0 6px 0;
+            color: #a0522d;
+            font-size: 1.2rem;
+        }
+        .craft-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 14px;
+        }
+        .craft-card button {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 22px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .craft-card button:hover {
+            background: #d2691e;
+        }
+section.about {
+    width: 100%;
+    max-width: 800px;   /* keeps content nicely centered */
+    margin: 36px auto;  /* equal space left + right */
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: #fff3e0;
+    box-shadow: 0 2px 8px rgba(210, 105, 30, 0.05);
+    box-sizing: border-box;
+}
+
+        footer {
+            background: #fff3e0;
+            text-align: center;
+            padding: 18px 0;
+            margin-top: 40px;
+            color: #a0522d;
+            font-size: 1rem;
+            border-top: 1px solid #ffe0b2;
+        }
+        @media (max-width: 900px) {
+            .navbar, .banner, .categories, .crafts-grid, section.newsletter, section.about {
+                max-width: 98vw;
+            }
+            .banner img {
+                height: 140px;
+            }
+        }
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .categories {
+                flex-direction: column;
+                gap: 18px;
+            }
+            .crafts-grid {
+                grid-template-columns: 1fr;
+            }
+            #cart-modal {
+                right: 10px;
+                width: 95vw;
+            }
+        }
+        /* Cart Modal */
+        #cart-modal {
+            display: none;
+            position: fixed;
+            top: 80px;
+            right: 40px;
+            width: 340px;
+            background: #fff;
+            border: 2px solid #ff9800;
+            border-radius: 14px;
+            box-shadow: 0 8px 32px rgba(210, 105, 30, 0.18);
+            z-index: 1000;
+            padding: 24px 20px 18px 20px;
+            animation: fadeIn 0.2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        #cart-modal h2 {
+            margin-top: 0;
+            color: #d2691e;
+            font-size: 1.3rem;
+        }
+        #cart-modal ul {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 10px 0;
+        }
+        #cart-modal li {
+            margin-bottom: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            color: #444;
+        }
+        #cart-modal .close-btn {
+            float: right;
+            cursor: pointer;
+            font-size: 22px;
+            color: #888;
+            margin-top: -8px;
+        }
+        #cart-modal .close-btn:hover {
+            color: #d2691e;
+        }
+        #cart-total {
+            font-weight: bold;
+            color: #a0522d;
+            font-size: 1.1rem;
+            margin-top: 8px;
+        }
+    </style>
+    
+</head>
+<body>
+    <header>
+        <div class="navbar">
+            <a href="index.html" class="logo">Craftify</a>
+            <nav>
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div style="display:flex;align-items:center;">
+                <form class="search-bar" onsubmit="event.preventDefault();searchProducts();">
+                    <input type="text" id="searchInput" placeholder="Search for products...">
+                    <button type="submit">Search</button>
+                </form>
+                <span id="cart-count">Cart: 0</span>
+                <button id="cart-btn">View Cart</button>
+            </div>
+        </div>
+    </header>
+    <!-- Cart Modal -->
+    <div id="cart-modal">
+        <span class="close-btn" onclick="toggleCartModal()">&times;</span>
+        <h2>Your Cart</h2>
+        <ul id="cart-items"></ul>
+        <p id="cart-total"></p>
+    </div>
+    <main>
+        <!-- Banner Section -->
+        <div class="banner">
+            <img src="https://i.postimg.cc/2yX2Q3pV/craftify.jpg" alt="Craftify Banner">
+        </div>
+        <!-- Categories Section -->
+        <div class="categories" id="categories">
+            <div class="category-card" onclick="scrollToSection('featured')" style="position:relative;">
+                <!-- Simple candle icon with a small sticker badge -->
+                <!-- Candle sticker badge (emoji) -->
+                <span style="
+                    position: center;
+                    font-size: 50px;
+                    display: inline-block;
+                    margin-bottom: 10px;
+                    background: #fff3e0;
+                    padding: 8px;
+                    border-radius: 0%;
+                    box-shadow: 0 1px 4px rgba(210,105,30,0.08);
+                ">🕯️</span>
+                <h4>Candles</h4>
+            </div>
+            <div class="category-card coming-soon">
+                <img src="https://img.icons8.com/color/96/000000/gift.png" alt="Gifts">
+                <h4>Gifts</h4>
+                <div class="coming-soon-label">Coming Soon</div>
+            </div>
+            <div class="category-card coming-soon">
+                <img src="https://img.icons8.com/color/96/000000/paint-palette.png" alt="Decor">
+                <h4>Decor</h4>
+                <div class="coming-soon-label">Coming Soon</div>
+                
+            </div>
+            <div class="category-card coming-soon">
+                <img src="https://img.icons8.com/color/96/000000/handmade.png" alt="Handmade">
+                <h4>Handmade</h4>
+                <div class="coming-soon-label">Coming Soon</div>
+            </div>
+        </div>
+        <div class="section-title" id="featured">Candles</div>
+        <div class="crafts-grid">
+            <div class="craft-card" data-title="Yellow Modak Candle" data-price="99">
+                <img src="https://i.postimg.cc/SR0fc48z/Whats-App-Image-2025-08-29-at-10-52-12-fb070b22.jpg" alt="Yellow Modak Candle">
+                <h3> Yellow Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="Decorative Candle" data-price="149">
+                <img src="https://i.postimg.cc/zXwYbXWK/Whats-App-Image-2025-08-29-at-10-52-12-9819ae28.jpg" alt="Decorative Candle">
+                <h3> Decorative Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="Aromatic Candle" data-price="99">
+                <img src="https://i.postimg.cc/JhnxLPMt/Whats-App-Image-2025-08-29-at-10-52-10-684c40b6.jpg" alt="Aromatic Candle">
+                <h3> Aromatic Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="White Modak Candle" data-price="99">
+                <img src="https://i.postimg.cc/0ymfBCcZ/Whats-App-Image-2025-08-29-at-10-52-14-87ebef8e.jpg" alt="White Modak Candle">
+                <h3>White Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Decorative Flower Candle" data-price="99">
+                <img src="https://i.postimg.cc/PxLMnsHG/Whats-App-Image-2025-08-29-at-10-52-16-d9162c68.jpg" alt="Decorative Flower Candle">
+                <h3>Decorative Flower Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Simple Candle" data-price="99">
+                <img src="https://i.postimg.cc/8PCzp13r/Whats-App-Image-2025-08-29-at-10-52-10-a4c72b61.jpg" alt="Simple Candle">
+                <h3>Simple Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Modak Candles" data-price="99">
+                <img src="https://i.postimg.cc/3NNQTwR8/Whats-App-Image-2025-08-29-at-10-52-20-45917769.jpg" alt="Modak Candles">
+                <h3>Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            
+            <div class="craft-card" data-title="Glass Candles" data-price="99">
+                <img src="https://i.postimg.cc/5yVpB7hZ/Whats-App-Image-2025-08-30-at-16-14-30-7208dcc6.jpg" alt="Glass Candles">
+                <h3> Glass Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+        <section class="about">
+            <h2>About Craftify</h2>
+            <p>Craftify connects you with talented artisans and their unique handmade candles. Our mission is to support small businesses and bring you one-of-a-kind candles from around the world.</p>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Craftify. All rights reserved.</p>
+        <p>Contact: <a href="tel:8692956453" style="color:#d2691e;text-decoration:none;">8692956453</a></p>
+        <p>Email: <a href="mailto:craftify.bharat@gmail.com" style="color:#d2691e;text-decoration:none;">craftify.bharat@gmail.com</a></p>
+    </footer>
+    <script>
+    let cartCount = 0;
+    let cart = [];
+    const cartCountSpan = document.getElementById('cart-count');
+    const buttons = document.querySelectorAll('.craft-card button');
+    const cartBtn = document.getElementById('cart-btn');
+    const cartModal = document.getElementById('cart-modal');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+
+    buttons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.craft-card');
+            const title = card.getAttribute('data-title');
+            const price = parseInt(card.getAttribute('data-price'));
+            cart.push({ title, price });
+            cartCount++;
+            cartCountSpan.textContent = 'Cart: ' + cartCount;
+            updateCartModal();
+        });
+    });
+
+    cartBtn.addEventListener('click', toggleCartModal);
+
+    function toggleCartModal() {
+        if (cartModal.style.display === 'block') {
+            cartModal.style.display = 'none';
+        } else {
+            updateCartModal();
+            cartModal.style.display = 'block';
+        }
+    }
+
+    function updateCartModal() {
+        cartItems.innerHTML = '';
+        let total = 0;
+        if (cart.length === 0) {
+            cartItems.innerHTML = '<li>Your cart is empty.</li>';
+            cartTotal.textContent = '';
+            return;
+        }
+        cart.forEach((item, idx) => {
+            total += item.price;
+            const li = document.createElement('li');
+            li.textContent = `${item.title} - ₹${item.price}`;
+            cartItems.appendChild(li);
+        });
+        cartTotal.textContent = 'Total: ₹' + total;
+    }
+
+    // Search functionality
+    function searchProducts() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const cards = document.querySelectorAll('.craft-card');
+        cards.forEach(card => {
+            const title = card.getAttribute('data-title').toLowerCase();
+            if (title.includes(input)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Scroll to section
+    function scrollToSection(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+    </script>
+</body>
+</html>

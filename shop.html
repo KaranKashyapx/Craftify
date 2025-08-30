@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop - Craftify</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Montserrat', Arial, sans-serif;
+            background: #fff8f0;
+            margin: 0;
+            color: #333;
+        }
+        header {
+            background: #fff3e0;
+            padding: 24px 0 16px 0;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        header h1 {
+            margin: 0 0 8px 0;
+            font-size: 2.5rem;
+            color: #d2691e;
+            letter-spacing: 2px;
+        }
+        nav {
+            margin-bottom: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #a0522d;
+            margin: 0 18px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.2s;
+        }
+        nav a:hover {
+            color: #ff9800;
+        }
+        .crafts-grid {
+           max-width: 1200px;
+            margin: 24px auto 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 28px;
+        }
+         .craft-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 16px rgba(210, 105, 30, 0.08);
+            padding: 18px 18px 24px 18px;
+            text-align: center;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .craft-card:hover {
+            box-shadow: 0 8px 32px rgba(210, 105, 30, 0.18);
+            transform: translateY(-4px) scale(1.03);
+        }
+        .craft-card img {
+                width: 100%;
+                height: auto; /* keeps aspect ratio */
+                max-height: 250px; /* prevents images from being too tall */
+                object-fit: cover;
+                border-radius: 12px;
+                margin-bottom: 14px;
+            }
+        .craft-card h3 {
+            margin: 10px 0 6px 0;
+            color: #a0522d;
+            font-size: 1.2rem;
+        }
+        .craft-card p {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 14px;
+        }
+        .craft-card button {
+            background: #ff9800;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 22px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .craft-card button:hover {
+            background: #d2691e;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Shop</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <h2>Shop Candles</h2>
+            <p>Discover unique handmade candles to brighten your space and mood!</p>
+            <div class="section-title" id="featured">Candles</div>
+        <div class="crafts-grid">
+            <div class="craft-card" data-title="Yellow Modak Candle" data-price="99">
+                <img src="https://i.postimg.cc/SR0fc48z/Whats-App-Image-2025-08-29-at-10-52-12-fb070b22.jpg" alt="Yellow Modak Candle">
+                <h3> Yellow Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="Decorative Candle" data-price="149">
+                <img src="https://i.postimg.cc/zXwYbXWK/Whats-App-Image-2025-08-29-at-10-52-12-9819ae28.jpg" alt="Decorative Candle">
+                <h3> Decorative Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="Aromatic Candle" data-price="99">
+                <img src="https://i.postimg.cc/JhnxLPMt/Whats-App-Image-2025-08-29-at-10-52-10-684c40b6.jpg" alt="Aromatic Candle">
+                <h3> Aromatic Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title="White Modak Candle" data-price="99">
+                <img src="https://i.postimg.cc/0ymfBCcZ/Whats-App-Image-2025-08-29-at-10-52-14-87ebef8e.jpg" alt="White Modak Candle">
+                <h3>White Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Decorative Flower Candle" data-price="99">
+                <img src="https://i.postimg.cc/PxLMnsHG/Whats-App-Image-2025-08-29-at-10-52-16-d9162c68.jpg" alt="Decorative Flower Candle">
+                <h3>Decorative Flower Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Simple Candle" data-price="99">
+                <img src="https://i.postimg.cc/8PCzp13r/Whats-App-Image-2025-08-29-at-10-52-10-a4c72b61.jpg" alt="Simple Candle">
+                <h3>Simple Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="craft-card" data-title=" Modak Candles" data-price="99">
+                <img src="https://i.postimg.cc/3NNQTwR8/Whats-App-Image-2025-08-29-at-10-52-20-45917769.jpg" alt="Modak Candles">
+                <h3>Modak Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+            
+            <div class="craft-card" data-title="Glass Candles" data-price="99">
+                <img src="https://i.postimg.cc/5yVpB7hZ/Whats-App-Image-2025-08-30-at-16-14-30-7208dcc6.jpg" alt="Glass Candles">
+                <h3> Glass Candle</h3>
+                <p></p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
