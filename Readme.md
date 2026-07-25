@@ -1,4 +1,4 @@
-# 💫 About Me:
+#💫 About Me:
 💻 Software Engineer<br>🚀 Passionate about coding<br>🌱 Always learning new technologies<br>🛠️ Building useful and simple solutions<br>📚 Love solving real-world problems<br>🤝 Open to collaboration<br>⚡ Clean code, better performance<br>☁️ Interested in Cloud & DevOps<br>🔍 Curious and detail-oriented<br>🎯 Learning something new every day
 
 
