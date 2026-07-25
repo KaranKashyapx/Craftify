@@ -1,9 +1,9 @@
 # Craftify Website
 
-## Overview
+# Overview
 Craftify is a web application designed to showcase and sell handmade crafts. This project serves as a platform for artisans to display their creations and for customers to discover unique handmade items.
 
-## Project Structure
+# Project Structure
 ```
 craftify-website
 ├── src
@@ -17,7 +17,7 @@ craftify-website
 └── README.md               # Project documentation
 ```
 
-## Installation
+# Installation
 1. Clone the repository:
    ```
    git clone <repository-url>
@@ -31,12 +31,12 @@ craftify-website
    npm install
    ```
 
-## Usage
+# Usage
 - Open `src/index.html` in your web browser to view the Craftify website.
 - Modify the CSS in `src/styles/main.css` to change the appearance of the site.
 - Update the JavaScript in `src/scripts/app.js` to add interactivity.
 
-## Features
+# Features
 - User-friendly interface for browsing and purchasing handmade crafts.
 - Responsive design for optimal viewing on various devices.
 - Easy navigation and search functionality.
