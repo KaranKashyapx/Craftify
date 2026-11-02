@@ -8,48 +8,33 @@
 
 ## Project Overview
 
-**CRAFTIFY** is a full-stack e-commerce web application built for handcrafted candles, festive modak candles, decorative lotus flower candles, aromatic tin candles, and sustainable home decor.
+**CRAFTIFY** is a handcrafted candle storefront project focused on festive gifting, artisanal décor, and premium home fragrance products.
 
-### Key Engineering Highlights
-1. **Responsive Dark-Amber Storefront:** Built with Next.js App Router, React, and Tailwind CSS (`#1e1912` warm dark-brown & `#f59e0b` amber aesthetic) plus a self-contained static GitHub Pages build (`index.html`, `shop.html`, `about.html`, `contact.html`).
-2. **Search, Filter & Sort:** Real-time keyword search, category filtering (`All Candles`, `Festive Modak`, `Aromatic Jars`, `Decorative & Lotus`), and sorting (`Featured`, `Price Low to High`, `Price High to Low`, `Customer Rating`).
-3. **Interactive Cart Drawer & Sync:** Persisted in `localStorage` (`craftify-cart`) for guests and synchronized with the MongoDB cart at sign-in (`POST /api/v1/cart/sync`).
-4. **Server-Calculated Orders in Integer Paise:** Subtotal, shipping (`₹0` when subtotal `>= ₹499`, else `₹49`), and `8%` estimated GST are calculated in integer paise (`₹1 = 100 paise`) with atomic stock reservation and `CF-XXXXXXXX` order references.
-5. **Role-Protected Administrator Panel:** Live sales summary (`₹8,420.00`), order status transitions (`pending` → `processing` → `shipped` → `delivered`, or `cancelled` with automatic stock restoration), and product/category CRUD.
-
----
-
-## How to Push Directly to Your GitHub Repository
-
-```bash
-git init
-git add .
-git commit -m "Restore complete Craftify storefront and full-stack project"
-git branch -M main
-git remote add origin https://github.com/karankashyapx/Craftify.git
-git push -u origin main --force
-```
-
-Once pushed, enable **Settings → Pages → Deploy from a branch (`main` / `/ (root)`)** and your live website will be active at `https://karankashyapx.github.io/Craftify/`.
+### Highlights
+- Responsive storefront experience
+- Product catalog and shopping flow
+- About and contact pages
+- Static GitHub Pages deployment ready
+- Simple cart interaction for demo browsing
 
 ---
 
-## Running Full-Stack Locally
+## Files in the project
 
-### 1. Backend (`backend/`)
+- `index.html` — homepage with featured products
+- `shop.html` — product catalog and filters
+- `about.html` — brand story section
+- `contact.html` — contact form and business info
+- `README.md` — project summary
+
+---
+
+## Run locally
+
+Open `index.html` in a browser, or serve the folder through a small local web server:
+
 ```bash
-cd backend
-npm install
-cp .env.example .env
-npm run seed
-npm run dev
-# Run the 9 automated backend tests:
-npm test
+python -m http.server 8000
 ```
 
-### 2. Frontend (`Frontend/`)
-```bash
-cd Frontend
-npm install
-npm run dev
-```
+Then visit: `http://localhost:8000`

@@ -1,76 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>About - Craftify</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #fff8f0;
-            margin: 0;
-            color: #333;
-        }
-        .about-container {
-            max-width: 700px;
-            margin: 60px auto 0 auto;
-            background: #fff3e0;
-            border-radius: 14px;
-            padding: 36px 32px;
-            box-shadow: 0 2px 8px rgba(210, 105, 30, 0.08);
-        }
-        h2 {
-            color: #d2691e;
-            margin-top: 0;
-            text-align: center;
-        }
-        p {
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-        a {
-            color: #d2691e;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 24px;
-        }
-        .my-about {
-            background: #ffe0b2;
-            border-radius: 10px;
-            padding: 18px 16px;
-            margin-bottom: 24px;
-            text-align: center;
-        }
-        .my-about strong {
-            color: #a0522d;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About | Craftify</title>
+  <style>
+    :root {
+      --bg: #1e1912;
+      --bg-soft: #2b2116;
+      --panel: #120e0a;
+      --card: #1c150f;
+      --gold: #f59e0b;
+      --gold-deep: #d97706;
+      --text: #f5efe6;
+      --muted: #cbbba4;
+      --accent: #e89538;
+      --line: #3a2e20;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #1e1912 0%, #1a140f 100%);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(43, 33, 22, 0.96);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: clamp(1.7rem, 2vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .pill-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #14110d;
+      font-weight: 800;
+      padding: 10px 18px;
+    }
+
+    .about-wrap {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      padding: 36px 0 24px;
+    }
+
+    .info-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 24px;
+    }
+
+    .info-card h1 {
+      margin-top: 0;
+      font-size: clamp(2rem, 3vw, 2.8rem);
+      color: var(--gold);
+    }
+
+    .info-card p {
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(100px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat-box {
+      background: #14100b;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 18px 12px;
+      text-align: center;
+    }
+
+    .stat-box strong {
+      display: block;
+      color: var(--gold);
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: #14100b;
+      color: var(--muted);
+      padding: 28px 0;
+      margin-top: 28px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mini-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .about-wrap { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-    <div class="about-container">
-        <h2>About Craftify</h2>
-        <div class="my-about">
-            <p><strong>Name:</strong> Karan Gond</p>
-            <p><strong>About Me:</strong> I am a student of Computer Science and I create functional sites like e-commerce.</p>
-        </div>
-        <p>
-            <strong>Craftify</strong> is your destination for beautiful, hand-crafted candles. We believe in the magic of handmade, and every candle in our store is poured with care, creativity, and love by skilled artisans.
-        </p>
-        <p>
-            Our mission is to support small businesses and bring you one-of-a-kind candles that brighten your home and mood. From soothing scents to decorative designs, Craftify offers a curated selection for every occasion.
-        </p>
-        <p>
-            Thank you for supporting local makers and choosing Craftify for your candle needs!
-        </p>
-        <a class="back-link" href="index.html">&larr; Back to Home</a>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Craftify</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="pill-btn" type="button" onclick="location.href='shop.html'">Shop Now</button>
     </div>
+  </header>
+
+  <main class="container about-wrap">
+    <section class="info-card">
+      <h1>About Craftify</h1>
+      <p>Craftify is a handcrafted candle brand focused on slow living, thoughtful gifting, and warm home décor. We create artisanal products with eco-conscious ingredients, careful craftsmanship, and a special sense of festive charm.</p>
+      <p>Our mission is to bring premium handmade candles to homes that value comfort, atmosphere, and creativity. Each piece captures a mood: from joyful festival evenings to quiet moments of rest.</p>
+      <div class="stats">
+        <div class="stat-box"><strong>100%</strong>Eco-friendly wax</div>
+        <div class="stat-box"><strong>8+</strong>Signature products</div>
+        <div class="stat-box"><strong>₹499+</strong>Free shipping</div>
+      </div>
+    </section>
+
+    <aside class="info-card">
+      <h3>Why people love us</h3>
+      <p>• Natural, soothing fragrances</p>
+      <p>• Festive and premium design</p>
+      <p>• Handmade artistry</p>
+      <p>• Thoughtful gifting</p>
+      <p>• Sustainable lifestyle values</p>
+    </aside>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><strong style="color: var(--gold);">Craftify</strong> — Handmade candles & lifestyle essentials.</div>
+      <div class="mini-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>

@@ -1,164 +1,405 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Shop - Craftify</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        body {
-            font-family: 'Montserrat', Arial, sans-serif;
-            background: #fff8f0;
-            margin: 0;
-            color: #333;
-        }
-        header {
-            background: #fff3e0;
-            padding: 24px 0 16px 0;
-            text-align: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        header h1 {
-            margin: 0 0 8px 0;
-            font-size: 2.5rem;
-            color: #d2691e;
-            letter-spacing: 2px;
-        }
-        nav {
-            margin-bottom: 10px;
-        }
-        nav a {
-            text-decoration: none;
-            color: #a0522d;
-            margin: 0 18px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: color 0.2s;
-        }
-        nav a:hover {
-            color: #ff9800;
-        }
-        .crafts-grid {
-           max-width: 1200px;
-            margin: 24px auto 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 28px;
-        }
-         .craft-card {
-            background: #fff;
-            border-radius: 16px;
-            box-shadow: 0 4px 16px rgba(210, 105, 30, 0.08);
-            padding: 18px 18px 24px 18px;
-            text-align: center;
-            transition: box-shadow 0.2s, transform 0.2s;
-        }
-        .craft-card:hover {
-            box-shadow: 0 8px 32px rgba(210, 105, 30, 0.18);
-            transform: translateY(-4px) scale(1.03);
-        }
-        .craft-card img {
-                width: 100%;
-                height: auto; /* keeps aspect ratio */
-                max-height: 250px; /* prevents images from being too tall */
-                object-fit: cover;
-                border-radius: 12px;
-                margin-bottom: 14px;
-            }
-        .craft-card h3 {
-            margin: 10px 0 6px 0;
-            color: #a0522d;
-            font-size: 1.2rem;
-        }
-        .craft-card p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 14px;
-        }
-        .craft-card button {
-            background: #ff9800;
-            color: #fff;
-            border: none;
-            border-radius: 20px;
-            padding: 8px 22px;
-            font-weight: bold;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .craft-card button:hover {
-            background: #d2691e;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Craftify</title>
+  <style>
+    :root {
+      --bg: #1e1912;
+      --bg-soft: #2b2116;
+      --panel: #120e0a;
+      --card: #1c150f;
+      --gold: #f59e0b;
+      --gold-deep: #d97706;
+      --text: #f5efe6;
+      --muted: #cbbba4;
+      --accent: #e89538;
+      --line: #3a2e20;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: linear-gradient(180deg, #1e1912 0%, #1a140f 100%);
+      color: var(--text);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid var(--line);
+      background: rgba(43, 33, 22, 0.96);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 72px;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .brand {
+      font-size: clamp(1.7rem, 2vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav-links a:hover { color: white; }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pill-btn {
+      border: none;
+      cursor: pointer;
+      border-radius: 999px;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #14110d;
+      font-weight: 800;
+      padding: 10px 18px;
+    }
+
+    .ghost-btn {
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 9px 16px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .shop-header {
+      padding: 28px 0 8px;
+      text-align: center;
+    }
+
+    .shop-header h1 {
+      margin: 0;
+      color: var(--gold);
+      font-size: clamp(2rem, 3vw, 2.8rem);
+    }
+
+    .shop-header p {
+      color: var(--muted);
+      margin: 10px auto 0;
+      max-width: 760px;
+      line-height: 1.7;
+    }
+
+    .shop-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      padding: 20px 0 6px;
+      flex-wrap: wrap;
+    }
+
+    .filters {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: #18130d;
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 9px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #14110d;
+      border: none;
+    }
+
+    .search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #18130d;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 12px;
+      min-width: min(90vw, 320px);
+    }
+
+    .search-wrap input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: var(--text);
+      font: inherit;
+      padding: 8px 0;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(220px, 1fr));
+      gap: 22px;
+      padding: 20px 0 40px;
+    }
+
+    .product-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      overflow: hidden;
+      padding: 14px;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .product-card:hover {
+      border-color: rgba(245, 158, 11, 0.8);
+      transform: translateY(-3px);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .product-card h3 {
+      margin: 8px 0 4px;
+      font-size: 1.1rem;
+      color: white;
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 10px 0;
+    }
+
+    .price { color: var(--gold); font-weight: 800; }
+
+    .add-cart {
+      border: none;
+      background: linear-gradient(180deg, var(--gold) 0%, var(--gold-deep) 100%);
+      color: #1e1912;
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 10px 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      background: #14100b;
+      color: var(--muted);
+      padding: 28px 0;
+      margin-top: 28px;
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .mini-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .products-grid { grid-template-columns: repeat(2, minmax(220px, 1fr)); }
+    }
+
+    @media (max-width: 620px) {
+      .nav { justify-content: center; }
+      .products-grid { grid-template-columns: 1fr; }
+      .shop-toolbar { justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Shop</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
-    <main>
-        <section>
-            <h2>Shop Candles</h2>
-            <p>Discover unique handmade candles to brighten your space and mood!</p>
-            <div class="section-title" id="featured">Candles</div>
-        <div class="crafts-grid">
-            <div class="craft-card" data-title="Yellow Modak Candle" data-price="99">
-                <img src="https://i.postimg.cc/SR0fc48z/Whats-App-Image-2025-08-29-at-10-52-12-fb070b22.jpg" alt="Yellow Modak Candle">
-                <h3> Yellow Modak Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title="Decorative Candle" data-price="149">
-                <img src="https://i.postimg.cc/zXwYbXWK/Whats-App-Image-2025-08-29-at-10-52-12-9819ae28.jpg" alt="Decorative Candle">
-                <h3> Decorative Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title="Aromatic Candle" data-price="99">
-                <img src="https://i.postimg.cc/JhnxLPMt/Whats-App-Image-2025-08-29-at-10-52-10-684c40b6.jpg" alt="Aromatic Candle">
-                <h3> Aromatic Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title="White Modak Candle" data-price="99">
-                <img src="https://i.postimg.cc/0ymfBCcZ/Whats-App-Image-2025-08-29-at-10-52-14-87ebef8e.jpg" alt="White Modak Candle">
-                <h3>White Modak Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title=" Decorative Flower Candle" data-price="99">
-                <img src="https://i.postimg.cc/PxLMnsHG/Whats-App-Image-2025-08-29-at-10-52-16-d9162c68.jpg" alt="Decorative Flower Candle">
-                <h3>Decorative Flower Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title=" Simple Candle" data-price="99">
-                <img src="https://i.postimg.cc/8PCzp13r/Whats-App-Image-2025-08-29-at-10-52-10-a4c72b61.jpg" alt="Simple Candle">
-                <h3>Simple Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            <div class="craft-card" data-title=" Modak Candles" data-price="99">
-                <img src="https://i.postimg.cc/3NNQTwR8/Whats-App-Image-2025-08-29-at-10-52-20-45917769.jpg" alt="Modak Candles">
-                <h3>Modak Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-            
-            <div class="craft-card" data-title="Glass Candles" data-price="99">
-                <img src="https://i.postimg.cc/5yVpB7hZ/Whats-App-Image-2025-08-30-at-16-14-30-7208dcc6.jpg" alt="Glass Candles">
-                <h3> Glass Candle</h3>
-                <p></p>
-                <button>Add to Cart</button>
-            </div>
-        </section>
-    </main>
+  <header>
+    <div class="container nav">
+      <a href="index.html" class="brand">Craftify</a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="ghost-btn" type="button" onclick="location.href='contact.html'">Need Help?</button>
+        <button class="pill-btn" type="button">Cart: <span id="cart-count">0</span></button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="shop-header">
+      <h1>Shop — Craftify</h1>
+      <p>One-of-a-kind handmade candles for festive gifting, home décor, and everyday calm.</p>
+    </section>
+
+    <section class="shop-toolbar">
+      <div class="filters">
+        <button class="filter-btn active" type="button" data-filter="all">All Candles</button>
+        <button class="filter-btn" type="button" data-filter="Festive Modak">Festive Modak</button>
+        <button class="filter-btn" type="button" data-filter="Aromatic Jars">Aromatic Jars</button>
+        <button class="filter-btn" type="button" data-filter="Decorative & Lotus">Decorative & Lotus</button>
+      </div>
+      <label class="search-wrap" aria-label="Search products">
+        <span>🔎</span>
+        <input id="search-input" type="text" placeholder="Search products..." />
+      </label>
+    </section>
+
+    <section class="products-grid" id="product-grid">
+      <article class="product-card" data-category="Festive Modak">
+        <img src="https://images.unsplash.com/photo-1602872029708-84d970d3386b?auto=format&fit=crop&w=900&q=80" alt="Yellow Modak Candle" />
+        <h3>Yellow Modak Candle</h3>
+        <div class="product-meta"><span>Festive Modak</span><span class="price">₹99</span></div>
+        <button class="add-cart" type="button" data-name="Yellow Modak Candle" data-price="99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Decorative & Lotus">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80" alt="Decorative Candle" />
+        <h3>Decorative Candle</h3>
+        <div class="product-meta"><span>Decorative & Lotus</span><span class="price">₹149</span></div>
+        <button class="add-cart" type="button" data-name="Decorative Candle" data-price="149">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Aromatic Jars">
+        <img src="https://images.unsplash.com/photo-1528740561666-dc2479dc08ab?auto=format&fit=crop&w=900&q=80" alt="Aromatic Candle" />
+        <h3>Aromatic Candle</h3>
+        <div class="product-meta"><span>Aromatic Jars</span><span class="price">₹99</span></div>
+        <button class="add-cart" type="button" data-name="Aromatic Candle" data-price="99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Festive Modak">
+        <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?auto=format&fit=crop&w=900&q=80" alt="White Modak Candle" />
+        <h3>White Modak Candle</h3>
+        <div class="product-meta"><span>Festive Modak</span><span class="price">₹99</span></div>
+        <button class="add-cart" type="button" data-name="White Modak Candle" data-price="99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Decorative & Lotus">
+        <img src="https://images.unsplash.com/photo-1557672172-298e090bd0f1?auto=format&fit=crop&w=900&q=80" alt="Decorative Flower Candle" />
+        <h3>Decorative Flower Candle</h3>
+        <div class="product-meta"><span>Decorative & Lotus</span><span class="price">₹99</span></div>
+        <button class="add-cart" type="button" data-name="Decorative Flower Candle" data-price="99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Aromatic Jars">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=900&q=80" alt="Simple Candle" />
+        <h3>Simple Candle</h3>
+        <div class="product-meta"><span>Aromatic Jars</span><span class="price">₹99</span></div>
+        <button class="add-cart" type="button" data-name="Simple Candle" data-price="99">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Festive Modak">
+        <img src="https://images.unsplash.com/photo-1509198397868-475647b2a1e5?auto=format&fit=crop&w=900&q=80" alt="Modak Candle Pack" />
+        <h3>Modak Candle Pack</h3>
+        <div class="product-meta"><span>Festive Modak</span><span class="price">₹129</span></div>
+        <button class="add-cart" type="button" data-name="Modak Candle Pack" data-price="129">Add to Cart</button>
+      </article>
+
+      <article class="product-card" data-category="Aromatic Jars">
+        <img src="https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=900&q=80" alt="Glass Candle" />
+        <h3>Glass Candle</h3>
+        <div class="product-meta"><span>Aromatic Jars</span><span class="price">₹149</span></div>
+        <button class="add-cart" type="button" data-name="Glass Candle" data-price="149">Add to Cart</button>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div><strong style="color: var(--gold);">Craftify</strong> — Handmade candles crafted for gifting.</div>
+      <div class="mini-links">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const cartCount = document.getElementById('cart-count');
+    let counter = 0;
+
+    document.querySelectorAll('.add-cart').forEach((button) => {
+      button.addEventListener('click', () => {
+        counter += 1;
+        cartCount.textContent = counter;
+        button.textContent = 'Added';
+        setTimeout(() => {
+          button.textContent = 'Add to Cart';
+        }, 800);
+      });
+    });
+
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+    const searchInput = document.getElementById('search-input');
+
+    filterButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach((btn) => btn.classList.remove('active'));
+        button.classList.add('active');
+        const selected = button.dataset.filter;
+        productCards.forEach((card) => {
+          const match = selected === 'all' || card.dataset.category === selected;
+          card.style.display = match ? 'block' : 'none';
+        });
+      });
+    });
+
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.trim().toLowerCase();
+      productCards.forEach((card) => {
+        const text = card.textContent.toLowerCase();
+        const visible = text.includes(term);
+        card.style.display = visible ? 'block' : 'none';
+      });
+    });
+  </script>
 </body>
 </html>
