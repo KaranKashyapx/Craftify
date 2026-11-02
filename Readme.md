@@ -1,24 +1,55 @@
-#💫 About Me:
-💻 Software Engineer<br>🚀 Passionate about coding<br>🌱 Always learning new technologies<br>🛠️ Building useful and simple solutions<br>📚 Love solving real-world problems<br>🤝 Open to collaboration<br>⚡ Clean code, better performance<br>☁️ Interested in Cloud & DevOps<br>🔍 Curious and detail-oriented<br>🎯 Learning something new every day
+# CRAFTIFY: An Artisanal Candles & Handcrafted Lifestyle E-Commerce Storefront
 
-
-# 💻 Tech Stack:
-![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![C++](https://img.shields.io/badge/c++-%2300599C.svg?style=for-the-badge&logo=c%2B%2B&logoColor=white) ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white) ![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white) ![MySQL](https://img.shields.io/badge/mysql-4479A1.svg?style=for-the-badge&logo=mysql&logoColor=white) ![Blender](https://img.shields.io/badge/blender-%23F5792A.svg?style=for-the-badge&logo=blender&logoColor=white) ![Canva](https://img.shields.io/badge/Canva-%2300C4CC.svg?style=for-the-badge&logo=Canva&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.shion.dev/api?username= KaranKashyapx&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://streak-stats.demolab.com/?user= KaranKashyapx&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.shion.dev/api/top-langs/?username= KaranKashyapx&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
-
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username= KaranKashyapx&theme=radical&no-frame=false&no-bg=false&margin-w=4)
-
-### ✍️ Random Dev Quote
-![](https://quotes-github-readme.vercel.app/api?type=horizontal&theme=radical)
-
-### 🔝 Top Contributed Repo
-![](https://github-contributor-stats.vercel.app/api?username= KaranKashyapx&limit=5&theme=dark&combine_all_yearly_contributions=true)
+**Submitted by:** Karan Arvind Gond  
+**Course:** B.Sc. Computer Science (SEM V, 2026–2027), University of Mumbai  
+**Live GitHub Pages Showcase:** [https://karankashyapx.github.io/Craftify/](https://karankashyapx.github.io/Craftify/)
 
 ---
-[![](https://komarev.com/ghpvc/?username= KaranKashyapx&icon=0&color=0)](https://visitcount.itsvg.in)
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+## Project Overview
+
+**CRAFTIFY** is a full-stack e-commerce web application built for handcrafted candles, festive modak candles, decorative lotus flower candles, aromatic tin candles, and sustainable home decor.
+
+### Key Engineering Highlights
+1. **Responsive Dark-Amber Storefront:** Built with Next.js App Router, React, and Tailwind CSS (`#1e1912` warm dark-brown & `#f59e0b` amber aesthetic) plus a self-contained static GitHub Pages build (`index.html`, `shop.html`, `about.html`, `contact.html`).
+2. **Search, Filter & Sort:** Real-time keyword search, category filtering (`All Candles`, `Festive Modak`, `Aromatic Jars`, `Decorative & Lotus`), and sorting (`Featured`, `Price Low to High`, `Price High to Low`, `Customer Rating`).
+3. **Interactive Cart Drawer & Sync:** Persisted in `localStorage` (`craftify-cart`) for guests and synchronized with the MongoDB cart at sign-in (`POST /api/v1/cart/sync`).
+4. **Server-Calculated Orders in Integer Paise:** Subtotal, shipping (`₹0` when subtotal `>= ₹499`, else `₹49`), and `8%` estimated GST are calculated in integer paise (`₹1 = 100 paise`) with atomic stock reservation and `CF-XXXXXXXX` order references.
+5. **Role-Protected Administrator Panel:** Live sales summary (`₹8,420.00`), order status transitions (`pending` → `processing` → `shipped` → `delivered`, or `cancelled` with automatic stock restoration), and product/category CRUD.
+
+---
+
+## How to Push Directly to Your GitHub Repository
+
+```bash
+git init
+git add .
+git commit -m "Restore complete Craftify storefront and full-stack project"
+git branch -M main
+git remote add origin https://github.com/karankashyapx/Craftify.git
+git push -u origin main --force
+```
+
+Once pushed, enable **Settings → Pages → Deploy from a branch (`main` / `/ (root)`)** and your live website will be active at `https://karankashyapx.github.io/Craftify/`.
+
+---
+
+## Running Full-Stack Locally
+
+### 1. Backend (`backend/`)
+```bash
+cd backend
+npm install
+cp .env.example .env
+npm run seed
+npm run dev
+# Run the 9 automated backend tests:
+npm test
+```
+
+### 2. Frontend (`Frontend/`)
+```bash
+cd Frontend
+npm install
+npm run dev
+```
